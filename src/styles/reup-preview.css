@@ -1,0 +1,440 @@
+/* Right Panel */
+.ru-right {
+    width: 320px;
+    flex-shrink: 0;
+    background: var(--bg-card);
+    border-left: 1px solid var(--border-default);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    max-height: 100%;
+}
+
+.ru-right-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-default);
+}
+
+/* Cut toggle button in header */
+.ru-header-cut-btn {
+    margin-left: auto;
+    padding: 4px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.ru-header-cut-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.ru-header-cut-btn.active {
+    background: hsla(25, 80%, 50%, 0.15);
+    border-color: hsla(25, 80%, 50%, 0.4);
+    color: #f97316;
+}
+
+/* Music Panel */
+.ru-music-panel {
+    flex: 1;
+    padding: 12px;
+}
+
+.ru-music-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ru-music-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.ru-music-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.ru-music-pick {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px dashed var(--border-default);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.15s;
+}
+
+.ru-music-pick:hover {
+    border-color: hsla(280, 60%, 50%, 0.5);
+    background: hsla(280, 60%, 50%, 0.08);
+    color: hsla(280, 80%, 75%, 1);
+}
+
+.ru-music-remove {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: none;
+    background: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.ru-music-remove:hover {
+    background: rgba(255, 107, 107, 0.2);
+}
+
+.ru-music-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: hsla(280, 60%, 50%, 0.1);
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.ru-music-badge {
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: hsla(280, 60%, 50%, 0.3);
+    color: hsla(280, 80%, 80%, 1);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* â”€â”€ Frame Ratio Wrapper â”€â”€ */
+.ru-frame-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* When a ratio class is active: constrain the wrapper to that ratio */
+.ru-frame-wrapper[class*="ratio-"] {
+    width: auto;
+    height: 100%;
+    max-height: 100%;
+    border: 2px solid hsla(200, 70%, 50%, 0.35);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 0 20px hsla(200, 70%, 50%, 0.1);
+}
+
+/* When BG blur is active, frame-wrapper must be transparent so blur shows through */
+.bg-blur-active .ru-frame-wrapper[class*="ratio-"] {
+    background: transparent;
+}
+
+/* Override inner vp-container to fill frame + crop video */
+.ru-frame-wrapper[class*="ratio-"] .vp-container {
+    border-radius: 0 !important;
+    max-height: none !important;
+}
+
+/* Show full video (letterbox) â€” user controls crop via Reframe zoom+XY */
+.ru-frame-wrapper[class*="ratio-"] .vp-video {
+    object-fit: contain !important;
+}
+
+/* â”€â”€ Specific ratios â”€â”€ */
+.ru-frame-wrapper.ratio-9-16 {
+    aspect-ratio: 9/16;
+}
+
+.ru-frame-wrapper.ratio-9-16 .vp-container {
+    aspect-ratio: 9/16 !important;
+}
+
+.ru-frame-wrapper.ratio-1-1 {
+    aspect-ratio: 1/1;
+}
+
+.ru-frame-wrapper.ratio-1-1 .vp-container {
+    aspect-ratio: 1/1 !important;
+}
+
+.ru-frame-wrapper.ratio-4-3 {
+    aspect-ratio: 4/3;
+}
+
+.ru-frame-wrapper.ratio-4-3 .vp-container {
+    aspect-ratio: 4/3 !important;
+}
+
+.ru-frame-wrapper.ratio-3-4 {
+    aspect-ratio: 3/4;
+}
+
+.ru-frame-wrapper.ratio-3-4 .vp-container {
+    aspect-ratio: 3/4 !important;
+}
+
+.ru-frame-wrapper.ratio-16-9 {
+    aspect-ratio: 16/9;
+}
+
+.ru-frame-wrapper.ratio-16-9 .vp-container {
+    aspect-ratio: 16/9 !important;
+}
+
+/* â”€â”€ Title Overlay Preview â”€â”€ */
+.ru-title-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 16px;
+    pointer-events: auto;
+    cursor: grab;
+    z-index: 5;
+    animation: fadeSlideIn 0.3s ease;
+}
+
+.ru-title-overlay.center {
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+}
+
+.ru-title-overlay.bottom {
+    bottom: 40px;
+}
+
+.ru-title-text {
+    text-align: center;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    max-width: 80%;
+    word-break: break-word;
+}
+
+.ru-desc-text {
+    font-size: 13px;
+    font-weight: 400;
+    opacity: 0.85;
+    text-align: center;
+    max-width: 70%;
+}
+
+/* ── Subtitle Canvas (frame-level WYSIWYG — matches engine output) ── */
+.ru-sub-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+    pointer-events: none;
+}
+
+/* â”€â”€ Subtitle Drag Overlay â”€â”€ */
+.ru-sub-drag-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 15;
+    cursor: grab;
+    border: 2px dashed rgba(167, 139, 250, 0.5);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.15);
+    transition: background 0.2s;
+}
+
+.ru-sub-drag-overlay:hover {
+    background: rgba(167, 139, 250, 0.1);
+    border-color: rgba(167, 139, 250, 0.8);
+}
+
+.ru-sub-drag-overlay:active {
+    cursor: grabbing;
+}
+
+.ru-sub-drag-hint {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 4px 10px;
+    border-radius: 6px;
+    pointer-events: none;
+}
+
+/* â”€â”€ Sub mini button â”€â”€ */
+.sub-btn-mini {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    cursor: pointer;
+    margin-left: 4px;
+    transition: all 0.2s;
+}
+
+.sub-btn-mini:hover {
+    background: rgba(167, 139, 250, 0.2);
+    color: #fff;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ru-title-overlay.center {
+    animation-name: fadeSlideInCenter;
+}
+
+@keyframes fadeSlideInCenter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* â”€â”€ Split Indicator Badge â”€â”€ */
+.ru-split-indicator {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 12px;
+    border-radius: 4px;
+    background: hsla(0, 0%, 0%, 0.7);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    z-index: 6;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* â”€â”€ Frame Badge (top bar) â”€â”€ */
+.ru-frame-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: hsla(200, 70%, 50%, 0.15);
+    color: hsla(200, 80%, 65%, 1);
+    letter-spacing: 0.3px;
+}
+
+/* â”€â”€ Border Overlay â”€â”€ */
+.ru-border-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+/* â”€â”€ Logo Overlay â”€â”€ */
+.ru-logo-overlay {
+    position: absolute;
+    z-index: 6;
+    pointer-events: none;
+    padding: 8px;
+}
+
+.ru-logo-overlay.top-left {
+    top: 0;
+    left: 0;
+}
+
+.ru-logo-overlay.top-right {
+    top: 0;
+    right: 0;
+}
+
+.ru-logo-overlay.bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.ru-logo-overlay.bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.ru-logo-img {
+    /* No max-height cap — logo size controlled by width:X% from slider */
+    /* This ensures preview = export (WYSIWYG) */
+    object-fit: contain;
+    border-radius: 4px;
+    opacity: 0.85;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+}
+
+/* â”€â”€ Zoom Animation (Ken Burns) â”€â”€ */
+/* Uses CSS 'scale' property (not transform) to avoid conflict with --pv-transform */
+.zoom-active .ru-preview-fx video,
+.zoom-active .ru-preview-fx .vp-video {
+    animation: kenBurnsZoom 8s ease-in-out infinite alternate;
+}
+
+@keyframes kenBurnsZoom {
+    0% {
+        scale: 1;
+    }
+
+    100% {
+        scale: var(--zoom-intensity, 1.08);
+    }
+}
+
+/* â”€â”€ Pixel Enlarge â€” pixelated rendering on video â”€â”€ */
+.pixel-enlarge-active video {
+    image-rendering: pixelated;
+    /* Subtle scale down+up to make pixelation visible at preview */
+    filter: contrast(1.02);
+}
+
+/* CENTER FEATURES â†’ reup-features.css */
+/* SUB Panel      â†’ reup-subtitle.css */

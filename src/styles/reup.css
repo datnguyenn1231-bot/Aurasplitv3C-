@@ -1,0 +1,544 @@
+/* â”€â”€ Reup View Styles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@import './reup-features.css';
+@import './reup-subtitle.css';
+@import './reup-preview.css';
+
+.reup-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hidden-svg {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* Top Bar */
+.ru-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 14px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-default);
+    flex-shrink: 0;
+    -webkit-app-region: drag;
+}
+
+.ru-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    -webkit-app-region: no-drag;
+}
+
+.ru-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    -webkit-app-region: no-drag;
+}
+
+.ru-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.ru-title {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.ru-meta-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: hsla(25, 80%, 50%, 0.15);
+    color: #f97316;
+}
+
+.ru-live-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: hsla(140, 70%, 45%, 0.2);
+    color: hsla(140, 80%, 60%, 1);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.ru-filter-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: hsla(25, 80%, 50%, 0.1);
+    color: hsla(25, 80%, 65%, 1);
+}
+
+/* ── Export Button ── */
+.ru-export-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    background: linear-gradient(135deg, hsla(268, 70%, 55%, 0.85), hsla(210, 80%, 50%, 0.85));
+    color: #fff;
+    transition: all 0.2s ease;
+    letter-spacing: 0.3px;
+}
+
+.ru-export-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, hsla(268, 70%, 60%, 1), hsla(210, 80%, 55%, 1));
+    box-shadow: 0 2px 12px hsla(268, 70%, 55%, 0.35);
+    transform: translateY(-1px);
+}
+
+.ru-export-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.ru-export-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ru-export-btn.exporting {
+    background: linear-gradient(135deg, hsla(40, 80%, 50%, 0.8), hsla(25, 80%, 50%, 0.8));
+}
+
+.ru-export-status {
+    font-size: 11px;
+    padding: 4px 14px;
+    color: hsla(0, 0%, 100%, 0.7);
+    background: hsla(0, 0%, 100%, 0.04);
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.06);
+}
+
+/* â”€â”€ Ratio Dropdown â”€â”€ */
+.ru-ratio-wrapper {
+    position: relative;
+}
+
+.ru-ratio-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.ru-ratio-btn:hover {
+    border-color: hsla(200, 70%, 50%, 0.4);
+    background: hsla(200, 70%, 50%, 0.08);
+    color: hsla(200, 80%, 70%, 1);
+}
+
+.ru-ratio-btn.active {
+    border-color: hsla(200, 70%, 50%, 0.5);
+    background: hsla(200, 70%, 50%, 0.12);
+    color: hsla(200, 80%, 75%, 1);
+}
+
+.ru-ratio-btn.open {
+    border-color: hsla(200, 70%, 50%, 0.6);
+    background: hsla(200, 70%, 50%, 0.15);
+}
+
+.ru-ratio-chevron {
+    transition: transform 0.2s;
+}
+
+.ru-ratio-chevron.open {
+    transform: rotate(180deg);
+}
+
+.ru-ratio-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 100;
+    min-width: 220px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    padding: 4px;
+    backdrop-filter: blur(12px);
+}
+
+.ru-ratio-option {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    width: 100%;
+    padding: 7px 10px;
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 12px;
+    text-align: left;
+    transition: all 0.12s;
+}
+
+.ru-ratio-option:hover {
+    background: hsla(200, 70%, 50%, 0.1);
+    color: var(--text-primary);
+}
+
+.ru-ratio-option.selected {
+    background: hsla(200, 70%, 50%, 0.15);
+    color: hsla(200, 80%, 75%, 1);
+}
+
+.ru-ratio-opt-label {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.ru-ratio-opt-desc {
+    font-size: 10px;
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+.ru-ratio-option.selected .ru-ratio-opt-desc {
+    color: hsla(200, 70%, 65%, 0.8);
+}
+
+/* Dropdown transition */
+.dropdown-enter-active {
+    transition: all 0.2s ease;
+}
+
+.dropdown-leave-active {
+    transition: all 0.15s ease;
+}
+
+.dropdown-enter-from {
+    opacity: 0;
+    transform: translateY(-6px);
+}
+
+.dropdown-leave-to {
+    opacity: 0;
+    transform: translateY(-4px);
+}
+
+/* Path items (Music picker in top bar) */
+.ru-path-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-default);
+    cursor: pointer;
+    transition: all 0.15s;
+    max-width: 220px;
+    font-size: 11px;
+}
+
+.ru-path-item:hover {
+    border-color: hsla(280, 60%, 50%, 0.4);
+    background: hsla(280, 60%, 50%, 0.08);
+}
+
+.ru-path-label {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+
+.ru-path-value {
+    color: var(--text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ru-path-value.empty {
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+.ru-path-clear {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 11px;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: all 0.15s;
+    line-height: 1;
+}
+
+.ru-path-clear:hover {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+}
+
+/* HDR Toggle */
+.ru-hdr-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.ru-hdr-toggle:hover {
+    border-color: hsla(40, 80%, 50%, 0.4);
+    background: hsla(40, 80%, 50%, 0.08);
+    color: hsla(40, 80%, 70%, 1);
+}
+
+.ru-hdr-toggle.active {
+    border-color: hsla(40, 80%, 50%, 0.5);
+    background: hsla(40, 80%, 50%, 0.15);
+    color: hsla(40, 90%, 70%, 1);
+    box-shadow: 0 0 8px hsla(40, 80%, 50%, 0.15);
+}
+
+.ru-split-popup {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 300px;
+    background: hsla(220, 20%, 14%, 0.97);
+    border: 1px solid hsla(0, 0%, 100%, 0.1);
+    border-radius: 10px;
+    padding: 12px;
+    z-index: 100;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+}
+
+/* Main 3-column */
+.ru-main {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Center Preview */
+.ru-center {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4px 8px;
+    background: #0a0a0f;
+    position: relative;
+    overflow: hidden;
+}
+
+.ru-loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.ru-error {
+    padding: 8px 14px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 6px;
+    color: var(--red);
+    font-size: 12px;
+}
+
+/* Preview with FX overlay */
+.ru-preview {
+    width: 100%;
+    max-width: 480px;
+    max-height: 45vh;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.ru-frame-wrapper {
+    width: 100%;
+    max-height: 45vh;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.ru-frame-wrapper[class*="ratio-"] {
+    width: auto;
+    height: 100%;
+    max-height: 45vh;
+    margin: 0 auto;
+}
+
+/* Background Blur Layer â€” blurred copy of video behind main */
+.ru-bg-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transform: scale(1.3);
+    transform-origin: center;
+    filter: blur(var(--bg-blur-amount, 40px)) brightness(0.65) saturate(1.2);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Overlay Video Layer â€” semi-transparent overlay on top of main video */
+.ru-overlay-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 5;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+.ru-preview-fx {
+    width: 100%;
+    transform-origin: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    /* RGB drift drop-shadow on parent — avoids being clipped by video's clip-path */
+    filter: var(--pv-rgb-filter);
+}
+
+/* Apply filter/transform ONLY to <video>, not controls */
+.ru-preview-fx video,
+.ru-preview-fx .vp-video {
+    transition: transform 0.15s ease, filter 0.4s ease;
+    /* ALL transforms merged: reframe (translate+scale) + anti-detect (mirror+rotate+lens) */
+    transform:
+        translate(var(--reframe-x, 0px), var(--reframe-y, 0px)) scale(var(--reframe-sx, 1), var(--reframe-sy, 1)) var(--pv-transform, );
+    /* Main filter + RGB drift filter combined.
+       RGB drift is separate so export can position glow around video content edges.
+       Both vars return '' when inactive, so concatenation just works.
+       /* Main filter only — RGB drift moved to parent to avoid clip-path clipping drop-shadow */
+    filter: var(--pv-filter);
+    transform-origin: center;
+    /* Transparent background so bg-blur shows through letterbox areas */
+    background: transparent !important;
+}
+
+/* Edit mode â€” drag cursor + visual indicator */
+.ru-preview-fx.reframe-edit {
+    cursor: grab;
+    outline: 2px dashed rgba(0, 200, 255, 0.5);
+    outline-offset: -2px;
+}
+
+.ru-preview-fx.reframe-edit:active {
+    cursor: grabbing;
+}
+
+.ru-cancel-video {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.65);
+    color: #aaa;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    z-index: 10;
+    opacity: 0;
+}
+
+.ru-preview:hover .ru-cancel-video {
+    opacity: 1;
+}
+
+.ru-cancel-video:hover {
+    background: rgba(239, 68, 68, 0.85);
+    color: #fff;
+}
+
+
+/* Right Panel + Frame + Overlays  reup-preview.css */

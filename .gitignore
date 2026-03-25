@@ -1,0 +1,55 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+dist-electron
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ─── Large directories (not code) ───
+binaries/
+models_ai/
+python_embed/
+release/
+release2/
+release3/
+release4/
+
+# ─── Binaries ───
+*.dll
+*.exe
+*.pyd
+
+# Test outputs
+shaders/e2e_test/
+shaders/bench_*.mp4
+shaders/*.mp4
+
+# Caches
+*.tsbuildinfo
+Thumbs.db
+
+# ─── Engine build artifacts ───
+engine/build/
+*.obj
+*.pdb
+*.exe
+*.lib

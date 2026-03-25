@@ -1,0 +1,92 @@
+﻿  ΓÇó electron-builder  version=24.13.3 os=10.0.26200
+  ΓÇó loaded configuration  file=C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3\electron-builder.json5
+  ΓÇó effective config  config=directories:
+  output: release/${version}
+  buildResources: build
+$schema: https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json
+appId: com.aurasplit.app
+asar: true
+productName: AuraSplit
+files:
+  - filter:
+      - dist
+      - dist-electron
+extraResources:
+  - from: python
+    to: python
+    filter:
+      - '**/*'
+  - from: ../python_embed
+    to: python_embed
+    filter:
+      - '**/*'
+  - from: binaries
+    to: binaries
+    filter:
+      - ffmpeg.exe
+      - ffprobe.exe
+      - NVEncC64.exe
+      - aura_engine.exe
+      - libplacebo-351.dll
+      - avcodec-62.dll
+      - avdevice-62.dll
+      - avfilter-11.dll
+      - avformat-62.dll
+      - avutil-60.dll
+      - swresample-6.dll
+      - libass-9.dll
+      - cudart64_110.dll
+      - xfade_custom.cl
+  - from: shaders
+    to: shaders
+    filter:
+      - '*.glsl'
+      - '!test_*.glsl'
+win:
+  target:
+    - target: dir
+      arch:
+        - x64
+  artifactName: ${productName}-Windows-${version}.${ext}
+  signAndEditExecutable: false
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  deleteAppDataOnUninstall: false
+
+  ΓÇó description is missed in the package.json  appPackageFile=C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3\package.json
+  ΓÇó author is missed in the package.json  appPackageFile=C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3\package.json
+  ΓÇó spawning        command=C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3\node_modules\app-builder-bin\win\x64\app-builder.exe node-dep-tree --dir C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3
+  ΓÇó exited          command=app-builder.exe code=0 pid=16208 out=[{"dir":"C:\\Users\\datng\\Desktop\\AI_TOOL\\AuraSplit_v3\\node_modules","deps":[{"name":"@babel/helper-string-parser","version":"7.27.1"},{"name":"@babel/helper-validator-identifier","version":"7.28.5"},{"name":"@babel/parser","version":"7.29.0"},{"name":"@babel/types","version":"7.29.0"},{"name":"@jridgewell/gen-mapping","version":"0.3.13"},{"name":"@jridgewell/remapping","version":"2.3.5"},{"name":"@jridgewell/resolve-uri","version":"3.1.2"},{"name":"@jridgewell/sourcemap-codec","version":"1.5.5"},{"name":"@jridgewell/trace-mapping","version":"0.3.31"},{"name":"@tailwindcss/node","version":"4.1.18"},{"name":"@tailwindcss/oxide","version":"4.1.18"},{"name":"@tailwindcss/oxide-win32-x64-msvc","version":"4.1.18","optional":true},{"name":"@tailwindcss/vite","version":"4.1.18"},{"name":"@vue/compiler-core","version":"3.5.27"},{"name":"@vue/compiler-dom","version":"3.5.27"},{"name":"@vue/compiler-sfc","version":"3.5.27"},{"name":"@vue/compiler-ssr","version":"3.5.27"},{"name":"@vue/devtools-api","version":"7.7.9"},{"name":"@vue/devtools-kit","version":"7.7.9"},{"name":"@vue/devtools-shared","version":"7.7.9"},{"name":"@vue/reactivity","version":"3.5.27"},{"name":"@vue/runtime-core","version":"3.5.27"},{"name":"@vue/runtime-dom","version":"3.5.27"},{"name":"@vue/server-renderer","version":"3.5.27"},{"name":"@vue/shared","version":"3.5.27"},{"name":"birpc","version":"2.9.0"},{"name":"copy-anything","version":"4.0.5"},{"name":"csstype","version":"3.2.3"},{"name":"detect-libc","version":"2.1.2"},{"name":"enhanced-resolve","version":"5.19.0"},{"name":"entities","version":"7.0.1"},{"name":"estree-walker","version":"2.0.2"},{"name":"graceful-fs","version":"4.2.11"},{"name":"hookable","version":"5.5.3"},{"name":"is-what","version":"5.5.0"},{"name":"jiti","version":"2.6.1"},{"name":"libass-wasm","version":"4.1.0"},{"name":"lightningcss","version":"1.30.2"},{"name":"lightningcss-win32-x64-msvc","version":"1.30.2","optional":true},{"name":"lucide-vue-next","version":"0.563.0"},{"name":"magic-string","version":"0.30.21"},{"name":"mitt","version":"3.0.1"},{"name":"nanoid","version":"3.3.11"},{"name":"perfect-debounce","version":"1.0.0"},{"name":"picocolors","version":"1.1.1"},{"name":"pinia","version":"3.0.4"},{"name":"postcss","version":"8.5.6"},{"name":"rfdc","version":"1.4.1"},{"name":"source-map-js","version":"1.2.1"},{"name":"speakingurl","version":"14.0.1"},{"name":"superjson","version":"2.2.6"},{"name":"tailwindcss","version":"4.1.18"},{"name":"tapable","version":"2.3.0"},{"name":"vue","version":"3.5.27"},{"name":"vue-router","version":"4.6.4"}]},{"dir":"C:\\Users\\datng\\Desktop\\AI_TOOL\\AuraSplit_v3\\node_modules\\vue-router\\node_modules","deps":[{"name":"@vue/devtools-api","version":"6.6.4"}]}]
+  ΓÇó spawning        command=C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3\node_modules\app-builder-bin\win\x64\app-builder.exe rebuild-node-modules cwd=C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3
+  ΓÇó map async       taskCount=2
+  ΓÇó map async       taskCount=1
+  ΓÇó map async       taskCount=55
+  ΓÇó no native dependencies  
+  ΓÇó exited          command=app-builder.exe code=0 pid=107892
+  ΓÇó packaging       platform=win32 arch=x64 electron=30.5.1 appOutDir=release\0.0.0\win-unpacked
+  ΓÇó spawning        command=C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3\node_modules\app-builder-bin\win\x64\app-builder.exe unpack-electron --configuration [{"platform":"win32","arch":"x64","version":"30.5.1"}] --output C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3\release\0.0.0\win-unpacked --distMacOsAppName Electron.app
+  ΓÇó map async       taskCount=2
+  ΓÇó map async       taskCount=1
+  Γ¿» remove C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3\release\0.0.0\win-unpacked\AuraSplit.exe: Access is denied.
+github.com/develar/go-fs-util.EnsureEmptyDir
+	/Volumes/data/go/pkg/mod/github.com/develar/go-fs-util@v0.0.0-20190620175131-69a2d4542206/fs.go:98
+github.com/develar/app-builder/pkg/electron.UnpackElectron.func1.1
+	/Volumes/data/Documents/app-builder/pkg/electron/electronUnpack.go:38
+github.com/develar/app-builder/pkg/util.MapAsyncConcurrency.func2
+	/Volumes/data/Documents/app-builder/pkg/util/async.go:68
+runtime.goexit
+	/usr/local/Cellar/go/1.17/libexec/src/runtime/asm_amd64.s:1581  
+  ΓÇó exited          command=app-builder.exe code=1 pid=95024
+  Γ¿» C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3\node_modules\app-builder-bin\win\x64\app-builder.exe process failed ERR_ELECTRON_BUILDER_CANNOT_EXECUTE
+Exit code:
+1  failedTask=build stackTrace=Error: C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3\node_modules\app-builder-bin\win\x64\app-builder.exe process failed ERR_ELECTRON_BUILDER_CANNOT_EXECUTE
+Exit code:
+1
+    at ChildProcess.<anonymous> (C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3\node_modules\builder-util\src\util.ts:252:14)
+    at Object.onceWrapper (node:events:623:26)
+    at ChildProcess.emit (node:events:508:28)
+    at ChildProcess.cp.emit (C:\Users\datng\Desktop\AI_TOOL\AuraSplit_v3\node_modules\cross-spawn\lib\enoent.js:34:29)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:305:5)

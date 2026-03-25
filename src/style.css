@@ -1,0 +1,144 @@
+@import 'tailwindcss';
+
+/* ═══════════════════════════════════════════
+   AuraSplit v2 — Premium Dark Theme
+   ═══════════════════════════════════════════ */
+
+/* Google Fonts loaded via index.html <link> for non-blocking load */
+
+:root {
+  --sidebar-width: 240px;
+  --titlebar-height: 36px;
+
+  /* Colors — vibrant accent palette */
+  --accent-h: 185;
+  --accent: hsl(var(--accent-h), 85%, 62%);
+  --accent-hover: hsl(var(--accent-h), 90%, 70%);
+  --accent-dim: hsl(var(--accent-h), 55%, 42%);
+  --accent-glow: hsla(var(--accent-h), 85%, 62%, 0.18);
+  --accent-glow-strong: hsla(var(--accent-h), 85%, 62%, 0.30);
+
+  --cyan: hsl(185, 75%, 55%);
+  --pink: hsl(330, 85%, 65%);
+  --amber: hsl(38, 92%, 62%);
+  --emerald: hsl(155, 70%, 52%);
+  --red: hsl(0, 78%, 62%);
+
+  /* Surfaces — warm-tinted dark (not pure grey → more alive) */
+  --bg-base: #111118;
+  --bg-sidebar: #151520;
+  --bg-card: #1a1a26;
+  --bg-card-hover: #22222f;
+  --bg-elevated: #262636;
+  --bg-input: #181822;
+
+  /* Borders — softer with color tint */
+  --border-subtle: rgba(140, 160, 200, 0.08);
+  --border-default: rgba(140, 160, 200, 0.12);
+  --border-hover: rgba(140, 160, 200, 0.20);
+  --border-accent: hsla(var(--accent-h), 85%, 62%, 0.40);
+
+  /* Text — warm white for readability */
+  --text-primary: #eeeef6;
+  --text-secondary: #9898b2;
+  --text-muted: #686882;
+
+  /* Glass — warmer */
+  --glass-bg: rgba(200, 210, 255, 0.04);
+  --glass-border: rgba(200, 210, 255, 0.08);
+  --glass-blur: 14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 90%, hsla(260, 50%, 20%, 0.25), transparent),
+    radial-gradient(ellipse 60% 50% at 90% 10%, hsla(185, 50%, 18%, 0.20), transparent),
+    var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* ── Scrollbar ──────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+::selection {
+  background: var(--accent-glow-strong);
+  color: var(--text-primary);
+}
+
+/* ── Transitions ────────────────────────── */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-enter-from {
+  transform: translateY(8px);
+  opacity: 0;
+}
+
+.slide-leave-to {
+  transform: translateY(-4px);
+  opacity: 0;
+}
+
+/* ── Utility ────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px hsla(var(--accent-h), 80%, 64%, 0.08),
+    0 0 60px hsla(var(--accent-h), 80%, 64%, 0.04);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

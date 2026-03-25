@@ -1,0 +1,603 @@
+/* ══════════════════════════════════════════════
+   TAB BAR — replaces accordion panels
+   ══════════════════════════════════════════════ */
+.ru-tab-bar {
+    display: flex;
+    gap: 2px;
+    padding: 6px 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+}
+
+.ru-tab {
+    position: relative;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.ru-tab:hover {
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.ru-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.ru-tab-dot {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-left: 4px;
+    vertical-align: middle;
+    box-shadow: 0 0 4px var(--accent);
+}
+
+.ru-tab-scroll {
+    flex: 1;
+    min-height: 0;
+    max-height: 40vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.ru-tab-scroll::-webkit-scrollbar { width: 4px; }
+.ru-tab-scroll::-webkit-scrollbar-track { background: transparent; }
+.ru-tab-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+.ru-tab-panel {
+    padding: 6px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.ruf-sub-heading {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 4px 0 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ══════════════════════════════════════════════
+   CENTER FEATURES — below preview
+   ══════════════════════════════════════════════ */
+.ru-features-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.ru-features-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ru-features-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ru-features-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+}
+
+.ru-center-features {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 6px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: start;
+    gap: 4px;
+}
+
+.ruf-section {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-default);
+    border-radius: 8px;
+    overflow: hidden;
+    align-self: start;
+}
+
+.ruf-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.ruf-header:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.ruf-chevron {
+    margin-left: auto;
+    font-size: 10px;
+    transition: transform 0.2s;
+    color: var(--text-muted);
+}
+
+.ruf-chevron.open {
+    transform: rotate(0deg);
+}
+
+.ruf-badge {
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: hsla(25, 80%, 50%, 0.15);
+    color: hsl(25, 80%, 60%);
+    margin-left: auto;
+    margin-right: 4px;
+}
+
+.ruf-body {
+    padding: 4px 10px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    animation: ruf-slide-in 0.15s ease-out;
+}
+
+@keyframes ruf-slide-in {
+    from { opacity: 0; max-height: 0; }
+    to { opacity: 1; max-height: 500px; }
+}
+
+.ruf-check {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 3px 4px;
+    border-radius: 4px;
+    transition: background 0.1s;
+}
+
+.ruf-check:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.ruf-check input[type="checkbox"] {
+    accent-color: var(--accent);
+}
+
+.ruf-desc {
+    font-size: 10px;
+    color: var(--text-muted);
+    padding-left: 24px;
+    margin-top: -2px;
+    margin-bottom: 4px;
+    opacity: 0.7;
+}
+
+.ruf-slider-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 4px;
+}
+
+.ruf-slider {
+    flex: 1;
+    height: 3px;
+    accent-color: var(--accent);
+}
+
+.ruf-val {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    min-width: 36px;
+    text-align: right;
+}
+
+.ruf-color {
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: transparent;
+    padding: 0;
+}
+
+.ruf-slider-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    min-width: 40px;
+    white-space: nowrap;
+}
+
+.ruf-auto-btn {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.ruf-auto-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.ruf-auto-btn.active {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+}
+
+.ruf-reset-btn {
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
+    cursor: pointer;
+    margin-top: 2px;
+    transition: background 0.2s;
+}
+
+.ruf-reset-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.ruf-edit-toggle {
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: all 0.2s;
+    margin-bottom: 4px;
+}
+
+.ruf-edit-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.ruf-edit-toggle.active {
+    background: rgba(0, 200, 255, 0.15);
+    border-color: rgba(0, 200, 255, 0.5);
+    color: #00c8ff;
+}
+
+.ruf-sync-toggle {
+    margin-bottom: 4px;
+}
+
+.ruf-sync-hint {
+    font-size: 9px;
+    color: var(--text-muted);
+    opacity: 0.7;
+    margin-left: 4px;
+}
+
+.ruf-pos-display {
+    font-size: 10px;
+    color: var(--text-muted);
+    padding: 3px 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.ruf-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+}
+
+.ruf-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 6px 8px;
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s;
+}
+
+.ruf-card:hover {
+    border-color: hsla(25, 80%, 50%, 0.3);
+    background: hsla(25, 80%, 50%, 0.06);
+}
+
+.ruf-card.active {
+    border-color: hsl(25, 80%, 50%);
+    background: hsla(25, 80%, 50%, 0.12);
+}
+
+.ruf-card-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.ruf-card-desc {
+    font-size: 9px;
+    color: var(--text-muted);
+}
+
+.ruf-font-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin-top: 2px;
+}
+
+.ruf-font-btn {
+    padding: 2px 1px;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    font-size: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ruf-font-btn:hover {
+    border-color: rgba(56, 189, 248, 0.3);
+    background: rgba(56, 189, 248, 0.06);
+}
+
+.ruf-font-btn.active {
+    border-color: rgba(56, 189, 248, 0.6);
+    background: rgba(56, 189, 248, 0.12);
+    color: #38bdf8;
+    box-shadow: 0 0 6px rgba(56, 189, 248, 0.2);
+}
+
+.ruf-color-input {
+    width: 28px;
+    height: 22px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+}
+
+.ruf-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.ruf-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ruf-input-row label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    min-width: 32px;
+}
+
+.ruf-input {
+    flex: 1;
+    padding: 4px 8px;
+    border: 1px solid var(--border-default);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+    font-size: 11px;
+    outline: none;
+}
+
+.ruf-input:focus {
+    border-color: var(--accent);
+}
+
+.ruf-select {
+    flex: 1;
+    padding: 3px 6px;
+    border: 1px solid var(--border-default);
+    border-radius: 4px;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 11px;
+    outline: none;
+}
+
+.ruf-logo-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 4px;
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.ruf-clear {
+    background: none;
+    border: none;
+    color: var(--red, #ef4444);
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0 4px;
+}
+
+.ruf-shared {
+    cursor: default;
+    opacity: 0.7;
+}
+
+.ruf-shared .active {
+    opacity: 1;
+    color: var(--text-primary);
+}
+
+.ruf-badge-sm {
+    margin-left: auto;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
+}
+
+/* ── Subtitle preview animations (Vue Transition) ── */
+.ru-sub-inner {
+    display: inline-block;
+}
+
+/* FADE */
+.ru-sub-anim-fade-enter-active {
+    transition: opacity 0.35s ease-out;
+}
+.ru-sub-anim-fade-leave-active {
+    transition: opacity 0.15s ease-in;
+}
+.ru-sub-anim-fade-enter-from,
+.ru-sub-anim-fade-leave-to {
+    opacity: 0;
+}
+
+/* POP */
+.ru-sub-anim-pop-enter-active {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease-out;
+}
+.ru-sub-anim-pop-leave-active {
+    transition: transform 0.15s ease-in, opacity 0.15s ease-in;
+}
+.ru-sub-anim-pop-enter-from {
+    transform: scale(0.3);
+    opacity: 0;
+}
+.ru-sub-anim-pop-leave-to {
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+/* BOUNCE */
+.ru-sub-anim-bounce-enter-active {
+    animation: ru-sub-bounce 0.5s ease-out;
+}
+.ru-sub-anim-bounce-leave-active {
+    transition: opacity 0.15s ease-in;
+}
+.ru-sub-anim-bounce-leave-to {
+    opacity: 0;
+}
+@keyframes ru-sub-bounce {
+    0% { transform: scale(0.5); opacity: 0; }
+    40% { transform: scale(1.15); opacity: 1; }
+    60% { transform: scale(0.92); }
+    80% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* SLIDE UP */
+.ru-sub-anim-slide_up-enter-active {
+    transition: transform 0.35s ease-out, opacity 0.35s ease-out;
+}
+.ru-sub-anim-slide_up-leave-active {
+    transition: transform 0.15s ease-in, opacity 0.15s ease-in;
+}
+.ru-sub-anim-slide_up-enter-from {
+    transform: translateY(30px);
+    opacity: 0;
+}
+.ru-sub-anim-slide_up-leave-to {
+    transform: translateY(-15px);
+    opacity: 0;
+}
+
+/* KARAOKE */
+.ru-sub-anim-karaoke-enter-active {
+    transition: opacity 0.3s ease-out;
+}
+.ru-sub-anim-karaoke-leave-active {
+    transition: opacity 0.15s ease-in;
+}
+.ru-sub-anim-karaoke-enter-from,
+.ru-sub-anim-karaoke-leave-to {
+    opacity: 0;
+}
+
+/* TYPEWRITER */
+.ru-sub-anim-typewriter-enter-active {
+    transition: opacity 0.2s ease-out;
+}
+.ru-sub-anim-typewriter-leave-active {
+    transition: opacity 0.1s ease-in;
+}
+.ru-sub-anim-typewriter-enter-from,
+.ru-sub-anim-typewriter-leave-to {
+    opacity: 0;
+}
+
+/* DYNAMIC CAPTION */
+.ru-sub-anim-dynamic_caption-enter-active {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease-out;
+}
+.ru-sub-anim-dynamic_caption-leave-active {
+    transition: transform 0.12s ease-in, opacity 0.12s ease-in;
+}
+.ru-sub-anim-dynamic_caption-enter-from {
+    transform: scale(0.6);
+    opacity: 0;
+}
+.ru-sub-anim-dynamic_caption-leave-to {
+    transform: scale(0.8);
+    opacity: 0;
+}

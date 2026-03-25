@@ -1,0 +1,60 @@
+// @see - https://www.electron.build/configuration/configuration
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  "appId": "com.aurasplit.app",
+  "asar": true,
+  "productName": "AuraSplit",
+  "directories": {
+    "output": "release/${version}"
+  },
+  "files": [
+    "dist",
+    "dist-electron"
+  ],
+  "extraResources": [
+    {
+      "from": "python",
+      "to": "python",
+      "filter": ["**/*"]
+    },
+    {
+      "from": "binaries",
+      "to": "binaries",
+      "filter": [
+        "ffmpeg.exe", "ffprobe.exe",
+        "NVEncC64.exe",
+        "aura_engine.exe",
+        "libplacebo-351.dll",
+        "avcodec-62.dll", "avdevice-62.dll", "avfilter-11.dll",
+        "avformat-62.dll", "avutil-60.dll", "swresample-6.dll",
+        "swscale-9.dll",
+        "libass-9.dll", "cudart64_110.dll",
+        "xfade_custom.cl"
+      ]
+    },
+    {
+      "from": "shaders",
+      "to": "shaders",
+      "filter": [
+        "*.glsl",
+        "!test_*.glsl"
+      ]
+    }
+  ],
+  "win": {
+    "target": [
+      {
+        "target": "dir",
+        "arch": ["x64"]
+      }
+    ],
+    "artifactName": "${productName}-Windows-${version}.${ext}",
+    "signAndEditExecutable": false
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": false
+  }
+}

@@ -1,0 +1,592 @@
+/* ── Root layout ──────────────────────────── */
+.editor-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 0;
+    overflow: hidden;
+}
+
+/* ── Top Bar ──────────────────────────────── */
+.ed-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 14px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-default);
+    flex-shrink: 0;
+}
+
+.ed-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ed-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ed-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), hsl(270, 70%, 60%));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.ed-title {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+/* ── Top Bar Path Selectors (reusable) ────── */
+.tb-path-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-default);
+    cursor: pointer;
+    transition: all 0.15s;
+    max-width: 220px;
+    font-size: 11px;
+}
+
+.tb-path-item:hover {
+    border-color: hsla(280, 60%, 50%, 0.4);
+    background: hsla(280, 60%, 50%, 0.08);
+}
+
+.tb-path-label {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+
+.tb-path-value {
+    color: var(--text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tb-path-value.empty {
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+.tb-path-clear {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 11px;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: all 0.15s;
+    line-height: 1;
+}
+
+.tb-path-clear:hover {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+}
+
+/* HDR Toggle */
+.tb-hdr-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.tb-hdr-toggle:hover {
+    border-color: hsla(40, 80%, 50%, 0.4);
+    background: hsla(40, 80%, 50%, 0.08);
+    color: hsla(40, 80%, 70%, 1);
+}
+
+.tb-hdr-toggle.active {
+    border-color: hsla(40, 80%, 50%, 0.5);
+    background: hsla(40, 80%, 50%, 0.15);
+    color: hsla(40, 90%, 70%, 1);
+    box-shadow: 0 0 8px hsla(40, 80%, 50%, 0.15);
+}
+
+.ed-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid var(--border-default);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.ed-btn:hover {
+    background: var(--bg-card-hover);
+}
+
+.ed-btn.primary {
+    background: linear-gradient(135deg, var(--accent-dim), var(--accent));
+    border-color: transparent;
+    color: #fff;
+}
+
+.ed-btn.primary:hover {
+    filter: brightness(1.1);
+}
+
+.ed-btn.danger {
+    color: var(--red);
+    border-color: transparent;
+    background: none;
+}
+
+.ed-btn.danger:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.ed-btn:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.ed-filename {
+    font-size: 11px;
+    color: var(--text-muted);
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ed-meta-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--accent-dim);
+    color: var(--accent);
+}
+
+/* ── Main 3-Column ────────────────────────── */
+.ed-main {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* ── Left Toolbar ─────────────────────────── */
+.ed-left {
+    width: 130px;
+    flex-shrink: 0;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border-default);
+    display: flex;
+    flex-direction: column;
+    padding: 8px 6px;
+    gap: 2px;
+    overflow-y: auto;
+}
+
+.ed-tool-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 6px;
+    background: none;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.ed-tool-btn:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+}
+
+.ed-tool-btn.active {
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.ed-left-spacer {
+    flex: 1;
+}
+
+.ed-left-divider {
+    height: 1px;
+    background: var(--border-default);
+    margin: 6px 4px;
+}
+
+.ed-left-settings {
+    font-size: 11px;
+}
+
+/* ── Center Preview ───────────────────────── */
+.ed-center {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background: #0a0a0f;
+    position: relative;
+}
+
+.ed-loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.ed-error {
+    padding: 8px 14px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 6px;
+    color: var(--red);
+    font-size: 12px;
+}
+
+/* Drop Zone */
+.ed-dropzone {
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 16 / 9;
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px dashed var(--border-default);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.ed-dropzone:hover,
+.ed-dropzone.hover {
+    border-color: var(--accent);
+    background: rgba(34, 211, 238, 0.04);
+}
+
+.ed-dropzone.hover .dz-icon {
+    color: var(--accent);
+    transform: translateY(-4px) scale(1.1);
+}
+
+.dz-icon {
+    color: var(--text-muted);
+    transition: all 0.3s;
+}
+
+.ed-dropzone:hover .dz-icon {
+    color: var(--accent);
+}
+
+.dz-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.dz-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.ed-preview {
+    width: 100%;
+    max-width: 700px;
+    position: relative;
+}
+
+.ed-cancel-video {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.65);
+    color: #aaa;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    z-index: 10;
+    opacity: 0;
+}
+
+.ed-preview:hover .ed-cancel-video {
+    opacity: 1;
+}
+
+.ed-cancel-video:hover {
+    background: rgba(239, 68, 68, 0.85);
+    color: #fff;
+}
+
+/* ── Right Settings Panel ─────────────────── */
+.ed-right {
+    width: 260px;
+    flex-shrink: 0;
+    background: var(--bg-card);
+    border-left: 1px solid var(--border-default);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.ed-right-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-default);
+}
+
+.ed-right-placeholder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.ed-right-soon {
+    font-size: 11px;
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+/* ── Bottom Timeline ──────────────────────── */
+.ed-timeline {
+    flex-shrink: 0;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-default);
+    padding: 8px 12px;
+}
+
+.tl-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.tl-row:last-child {
+    margin-bottom: 0;
+}
+
+.tl-label-track {
+    width: 40px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+.tl-track {
+    flex: 1;
+    height: 22px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.tl-track.accent {
+    background: linear-gradient(90deg,
+            hsla(var(--accent-h), 60%, 50%, 0.15) 0%,
+            hsla(var(--accent-h), 60%, 50%, 0.05) 100%);
+}
+
+.tl-track.warm {
+    background: linear-gradient(90deg,
+            hsla(30, 80%, 50%, 0.12) 0%,
+            hsla(30, 80%, 50%, 0.04) 100%);
+}
+
+/* ── Music Indicator (Left Panel) ──────────── */
+.ed-music-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    margin: 2px 6px;
+    border-radius: 6px;
+    background: hsla(280, 60%, 50%, 0.15);
+    border: 1px solid hsla(280, 60%, 50%, 0.25);
+    cursor: pointer;
+    transition: background 0.15s;
+    font-size: 10px;
+    color: hsla(280, 80%, 75%, 1);
+}
+
+.ed-music-indicator:hover {
+    background: hsla(280, 60%, 50%, 0.25);
+}
+
+.ed-music-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 80px;
+}
+
+.ed-music-clear {
+    background: none;
+    border: none;
+    color: hsla(280, 60%, 70%, 0.7);
+    cursor: pointer;
+    font-size: 10px;
+    padding: 0 2px;
+    line-height: 1;
+}
+
+.ed-music-clear:hover {
+    color: #ff6b6b;
+}
+
+/* ── Music Panel (Right Panel) ──────────────── */
+.ed-music-panel {
+    flex: 1;
+    padding: 12px;
+}
+
+.ed-music-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ed-music-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.ed-music-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.ed-music-pick {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px dashed var(--border-default);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.15s;
+}
+
+.ed-music-pick:hover {
+    border-color: hsla(280, 60%, 50%, 0.5);
+    background: hsla(280, 60%, 50%, 0.08);
+    color: hsla(280, 80%, 75%, 1);
+}
+
+.ed-music-remove {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: none;
+    background: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.ed-music-remove:hover {
+    background: rgba(255, 107, 107, 0.2);
+}
+
+.ed-music-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: hsla(280, 60%, 50%, 0.1);
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.ed-music-badge {
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: hsla(280, 60%, 50%, 0.3);
+    color: hsla(280, 80%, 80%, 1);
+    font-size: 10px;
+    font-weight: 600;
+}
